@@ -186,6 +186,13 @@
   
 .edu-wrap { display:flex; justify-content:center; }
 .edu-text { max-width:820px; margin:28px auto 0; text-align:center; color:#000; font-size:17px; line-height:1.6; }
+
+    .keyRow{margin:10px 20px 0; display:flex; gap:18px; align-items:center; font-size:18px; font-weight:800;}
+    .keyItem{display:inline-flex; gap:10px; align-items:center;}
+    .swatch{width:16px; height:16px; border-radius:4px; display:inline-block; box-shadow:0 2px 6px rgba(0,0,0,.18);}
+    .swatch-think{background:#f0e770;}
+    .swatch-brake{background:#d40000;}
+
 </style>
 </head>
 <body>
@@ -218,26 +225,21 @@
         <div><b>Total Stopping Distance:</b> <span id="stop">—</span> meters</div>
         <div><b>Distance Travelled Per Second:</b> <span id="dps">—</span> m/s</div>
         <div><b>Following Distance:</b> <span id="follow">—</span> meters</div>
-      <div class="distBar" id="distBar">
-          <div class="seg think" id="segThink">Thinking Distance — m</div>
-          <div class="seg brake" id="segBrake">Braking Distance — m</div>
-        </div>
 
-        <div class="ticks">
-          <div class="tick" id="t0" style="left:0%"><div class="line"></div>
-  
+      <div class="distBar" id="distBar" aria-label="Thinking and braking distance visual">
+        <div class="seg think" id="segThink">— m</div>
+        <div class="seg brake" id="segBrake">— m</div>
+      </div>
+      <div class="keyRow" aria-label="Key">
+        <span class="keyItem"><span class="swatch swatch-think"></span>Thinking</span>
+        <span class="keyItem"><span class="swatch swatch-brake"></span>Braking</span>
+      </div>
 
-</div>
-
-      <div class="smallnote">
+<div class="smallnote">
         
       </div>
 
-      <div class="roadWrap">
-        <div>0m</div></div>
-          <div class="tick" id="tSplit" style="left:50%"><div class="line"></div><div><span id="splitLabel">—</span>m</div></div>
-          <div class="tick" id="tEnd" style="left:100%"><div class="line"></div><div><span id="endLabel">—</span>m</div></div>
-        </div>
+      
       </div>
     </div>
   </div>
@@ -255,19 +257,6 @@
 
   const el = (id)=>document.getElementById(id);
   const fmt = (n)=> (Number.isInteger(n) ? String(n) : (Math.round(n*100)/100).toString());
-
-  // Auto-scale label text to fit short/long segments
-  function scaleLabel(elm, widthPx){
-    if(!elm) return;
-    if(widthPx < 90){
-      elm.style.fontSize = "12px";
-    } else if(widthPx < 160){
-      elm.style.fontSize = "16px";
-    } else if(widthPx < 260){
-      elm.style.fontSize = "19px";
-    } else {
-      elm.style.fontSize = "22px";
-    }
   }
 
 
@@ -288,6 +277,7 @@
     el('follow').textContent = follow == null ? '—' : fmt(follow);
 
     const bar = el('distBar');
+    if(!bar) return;
     const padL = 20;
     const padR = 20;
     const usable = bar.clientWidth - padL - padR;
@@ -303,31 +293,11 @@
 
     segThink.style.width = thinkW + 'px';
     segThink.style.left  = padL + 'px';
-    segThink.textContent = 'Thinking Distance ' + (think ?? '—') + ' m';
+    segThink.textContent = (think == null ? '—' : fmt(think)) + ' m';
 
     segBrake.style.width = brakeW + 'px';
     segBrake.style.left  = (padL + thinkW) + 'px';
-    segBrake.textContent = 'Braking Distance ' + (brake ?? '—') + ' m';
-
-    // Resize the text inside each segment based on its width
-    scaleLabel(segThink, thinkW);
-    scaleLabel(segBrake, brakeW);
-
-
-    el('splitLabel').textContent = think ?? '—';
-    el('endLabel').textContent   = stop ?? '—';
-
-    const splitX = stop ? (think/stop)*100 : 50;
-    el('tSplit').style.left = splitX + '%';
-
-    const maxStop = 171;
-    const pct = stop ? Math.max(0, Math.min(100, (stop / maxStop) * 100)) : 0;
-
-    const road = document.querySelector('.road');
-    const roadPad = 30;
-    const usableRoad = road.clientWidth - (roadPad*2);
-    const x = roadPad + (usableRoad * (pct/100));
-    el('car').style.left = x + 'px';
+    segBrake.textContent = (brake == null ? '—' : fmt(brake)) + ' m';
   }
 
   el('calcBtn').addEventListener('click', recalc);
