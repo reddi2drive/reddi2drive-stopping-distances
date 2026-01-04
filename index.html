@@ -185,7 +185,7 @@
     }
   
 .edu-wrap { display:flex; justify-content:center; }
-.edu-text { max-width:820px; margin:28px auto 0; text-align:center; color:#000; font-size:17px; line-height:1.6; }
+.edu-text { max-width:820px; margin:10px auto 0; text-align:center; color:#000; font-size:17px; line-height:1.6; }
 
     .keyRow{margin:10px 20px 0; display:flex; gap:18px; align-items:center; font-size:18px; font-weight:800;}
     .keyItem{display:inline-flex; gap:10px; align-items:center;}
@@ -223,8 +223,8 @@
         <div><b>Thinking Distance.</b> <span id="think">—</span> meters</div>
         <div class="brake"><b>Braking Distance:</b> <span id="brake">—</span> meters</div>
         <div><b>Total Stopping Distance:</b> <span id="stop">—</span> meters</div>
-        <div><b>Distance Travelled Per Second:</b> <span id="dps">—</span> m/s</div>
-        <div><b>Following Distance:</b> <span id="follow">—</span> meters</div>
+        <div><b>Distance Travelled per Second:</b> <span id="dps">—</span> m/s</div>
+        <div><b>Safe Following Distance:</b> <span id="follow">—</span> meters</div>
 
       <div class="distBar" id="distBar" aria-label="Thinking and braking distance visual">
         <div class="seg think" id="segThink">— m</div>
@@ -310,7 +310,7 @@
 </script>
 
 <div class="edu-wrap">
-<div class="edu-text" style="margin-top:28px; max-width:980px; font-size:17px; line-height:1.6; color:#000;">
+<div class="edu-text">
     <p><strong>This interactive table</strong> shows how speed and road conditions affect the distance needed to think, brake, stop and follow safely.</p>
 
     <p>Use the <strong>“Conditions”</strong> box and the <strong>“Speed”</strong> box to select your speed (mph) and whether the road is <strong>Dry</strong> or <strong>Wet</strong>. The distances update automatically using the principles from the Highway Code.</p>
@@ -324,7 +324,10 @@
 
     <p><strong>Understanding wet-road distances</strong><br>
     The Highway Code advises drivers to allow at least double the normal stopping and following distances in wet conditions. This guidance reflects the fact that tyres have less grip and braking distances increase significantly. However, a driver’s thinking time does not change, so the thinking distance remains the same. This means that while braking distance can increase dramatically, the total stopping distance does not always double exactly — it increases sharply, but not in a perfectly straight 2× relationship.</p>
-  </div>
+  
+<p>Stopping distances are not only influenced by speed and weather conditions. A heavily loaded vehicle — such as when carrying passengers or luggage, or when towing — has more momentum and places greater demand on the braking system. This can increase braking distance significantly, even in dry conditions. Drivers should allow extra space and time when their vehicle is heavily loaded.</p>
+
+</div>
 </div>
 </body>
 </html>
