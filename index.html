@@ -11,7 +11,12 @@
       background: #ffffff;
       color: #111;
     }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 36px; }
+.wrap { 
+  max-width: 980px; 
+  margin: 0 auto; 
+  padding: 28px 56px 44px; 
+  box-sizing: border-box;
+}
     .panel { position: relative; }
     h1 {
       font-size: clamp(28px, 4vw, 44px);
@@ -281,17 +286,7 @@
 }
 
 </style>
-.wrap{
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 28px 56px 44px;
-}
-
-@media (max-width: 520px){
-  .wrap{
-    padding: 24px 48px 38px;
-  }
-}
+  
 <!-- Home screen icons -->
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
