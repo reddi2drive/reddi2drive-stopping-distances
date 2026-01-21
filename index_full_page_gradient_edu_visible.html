@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reddi2Drive | Stopping Distance Calculator</title>
+
+<style>
+/* ===============================
+   GLOBAL PAGE GRADIENT (FIX)
+   =============================== */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  color: #ffffff;
+
+  /* Blue → teal gradient like your tests */
+  background: radial-gradient(
+      1200px 600px at 10% -10%,
+      #1f3b64 0%,
+      rgba(31,59,100,0) 60%
+    ),
+    linear-gradient(
+      180deg,
+      #0f243d 0%,
+      #0b1c2e 45%,
+      #081421 100%
+    );
+
+  background-attachment: fixed;
+}
+
+/* ===============================
+   LAYOUT
+   =============================== */
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 18px 36px;
+}
+
+h1 {
+  font-size: clamp(28px, 4vw, 44px);
+  margin: 70px 0 18px;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+/* ===============================
+   CALCULATOR PANEL (NO WHITE)
+   =============================== */
+.box {
+  max-width: 720px;
+  padding: 18px;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.03)
+  );
+
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+}
+
+/* ===============================
+   FORM
+   =============================== */
+.formrow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.label {
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+select {
+  font-size: 20px;
+  padding: 10px 12px;
+  border-radius: 8px;
+
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+select option {
+  color: #000;
+}
+
+.btn {
+  margin-top: 10px;
+  background: #d40000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 12px 22px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(212,0,0,.35);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* ===============================
+   RESULTS / EDUCATIONAL TEXT
+   =============================== */
+.results {
+  margin-top: 22px;
+  font-size: 26px;
+  line-height: 1.55;
+}
+
+.results .brake {
+  color: #ff4d4d;
+  font-weight: 800;
+}
+
+.edu-text,
+.smallnote,
+.results b {
+  color: #ffffff;
+}
+
+/* ===============================
+   MOBILE
+   =============================== */
+@media (max-width: 620px) {
+  .label, select, .btn { font-size: 18px; }
+  .results { font-size: 22px; }
+}
+
+/* ===============================
+   EDUCATIONAL TEXT – FORCE VISIBILITY
+   =============================== */
+.smallnote,
+.edu-text {
+  margin-top: 18px;
+  padding: 14px 16px;
+  color: #ffffff !important;
+  font-size: 16px;
+  line-height: 1.5;
+
+  /* Visible dark panel */
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <h1>Calculate Your Stopping Distance</h1>
+
+  <div class="box">
+    <div class="formrow">
+      <div class="label">Conditions:</div>
+      <select>
+        <option>Dry</option>
+        <option>Wet</option>
+      </select>
+    </div>
+
+    <div class="formrow">
+      <div class="label">Speed (mph):</div>
+      <select>
+        <option>20</option>
+        <option>30</option>
+        <option>40</option>
+        <option>50</option>
+        <option>60</option>
+        <option>70</option>
+      </select>
+    </div>
+
+    <button class="btn">Calculate</button>
+  </div>
+
+  <div class="results">
+    Thinking distance + <span class="brake">Braking distance</span> = Total stopping distance
+  </div>
+
+  <p class="smallnote">
+    UK guidance: stopping distances increase significantly in wet conditions and at higher speeds.
+  </p>
+
+</div>
+</body>
+</html>
