@@ -382,6 +382,31 @@
 @media (max-width: 900px){
   .r2d-two{ grid-template-columns: 1fr; }
 }
+
+    /* ✅ Remove bottom empty band */
+body,
+html{
+  min-height: auto !important;
+  height: auto !important;
+}
+
+.r2d-shell,
+.r2d-grid{
+  align-items: start !important;
+}
+
+/* stop phantom spacing from old right column */
+.r2d-grid{
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* prevent extra page stretch */
+main,
+.site-content,
+.wp-site-blocks{
+  padding-bottom: 0 !important;
+}
     
   </style>
 </head>
