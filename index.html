@@ -520,6 +520,37 @@ main,
   .r2d-learn-grid{
     grid-template-columns:1fr;
   }
+  /* ===== Center Logo ===== */
+.r2d-logo-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:18px 0 24px;
+}
+
+/* Logo styling */
+.r2d-logo-wrap img{
+  width:110px;          /* ← bigger */
+  height:110px;
+  object-fit:cover;
+
+  border-radius:50%;    /* ✅ perfect circle */
+
+  padding:10px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.15);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.45),
+    inset 0 0 0 1px rgba(255,255,255,.06);
+
+  transition:.2s ease;
+}
+
+/* subtle premium hover */
+.r2d-logo-wrap img:hover{
+  transform:translateY(-2px) scale(1.03);
+}
 }
     
   </style>
