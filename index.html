@@ -351,6 +351,17 @@
     @media (max-width:600px){
       .r2d-learn-grid{ grid-template-columns:1fr; }
     }
+
+/* Hide update button but keep functionality */
+#calcBtn{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+  height:0;
+  width:0;
+  overflow:hidden;
+}
+    
   </style>
 </head>
 
@@ -401,6 +412,8 @@
             </select>
           </div>
         </div>
+
+        <button id="calcBtn" type="button">Update distances</button>
 
         <div class="r2d-kpis" aria-label="Results">
           <div class="r2d-kpi">
