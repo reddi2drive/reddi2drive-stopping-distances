@@ -7,13 +7,10 @@
 
   <style>
     /* =========================================================
-       R2D STOPPING DISTANCE CALC — THEME REVAMP (KEEP IDS!)
+       R2D STOPPING DISTANCE CALC — CLEAN FINAL (KEEP IDS!)
        ========================================================= */
 
     :root{
-      --bgA:#06080f;
-      --bgB:#04060c;
-
       --text:#eef2ff;
       --muted: rgba(238,242,255,.72);
 
@@ -31,7 +28,7 @@
     }
 
     *{ box-sizing:border-box; }
-    html, body{ height:100%; }
+    html, body{ height:auto; }
     body{
       margin:0;
       font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial, sans-serif;
@@ -44,54 +41,42 @@
 
     .r2d-wrap{ max-width:1100px; margin:0 auto; padding: 18px 14px 48px; }
 
-  /* ===== CLEAN CENTRED LOGO HEADER ===== */
+    /* ===== Center logo badge (no Home / no text) ===== */
+    .r2d-top{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin: 10px 0 16px;
+    }
 
-.r2d-top{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:12px 0 18px;
-}
+    /* perfect circle container */
+    .r2d-logo-badge{
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow:
+        0 14px 34px rgba(0,0,0,.55),
+        inset 0 0 0 1px rgba(255,255,255,.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
 
-/* Logo container */
-.r2d-logo{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-}
+    /* logo sits inside without crazy crop */
+    .r2d-logo-badge img{
+      max-width: 78%;
+      height: auto;
+      display:block;
+      border-radius: 14px; /* keeps the logo itself slightly soft */
+    }
 
-/* Logo styling */
-.r2d-logo img{
-  height:54px;                 /* 👈 bigger */
-  width:auto;
-  border-radius:16px;          /* 👈 rounded */
-  padding:6px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.10);
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.45),
-    inset 0 0 18px rgba(255,255,255,.04);
-
-  transition:.2s ease;
-}
-
-/* subtle premium hover */
-.r2d-logo img:hover{
-  transform:translateY(-2px) scale(1.03);
-  box-shadow:
-    0 18px 40px rgba(0,0,0,.55),
-    0 0 25px rgba(229,59,59,.25);
-}
-
-/* mobile sizing */
-@media (max-width:520px){
-  .r2d-logo img{
-    height:46px;
-    border-radius:14px;
-  }
-}
+    @media (max-width:520px){
+      .r2d-logo-badge{ width:84px; height:84px; }
+      .r2d-logo-badge img{ max-width: 80%; border-radius: 12px; }
+    }
 
     /* Title card */
     .r2d-titlecard{
@@ -153,7 +138,6 @@
       font-weight:1000;
       letter-spacing:.2px;
     }
-    .r2d-muted{ color: var(--muted); }
 
     /* Form */
     .r2d-form{
@@ -194,7 +178,6 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
       width:100%;
       margin-top: 12px;
       padding: 12px 16px;
@@ -286,81 +269,7 @@
       border: 1px solid rgba(255,255,255,.16);
     }
 
-    /* Road visual (kept, but darkened) */
-    .roadWrap{ margin-top: 14px; }
-    .roadTitle{
-      margin: 0 0 10px;
-      font-size: 14px;
-      font-weight:1000;
-      color: rgba(238,242,255,.88);
-    }
-    .road{ position: relative; height: 180px; }
-    .asphalt{
-      position:absolute;
-      left: 10px; right: 10px;
-      top: 28px;
-      height: 66px;
-      border-radius: 14px;
-      background: linear-gradient(#2c313b, #1f232c);
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,.06);
-    }
-    .dash{
-      position:absolute;
-      left: 28px; right: 28px;
-      top: 60px;
-      height: 6px;
-      background: repeating-linear-gradient(to right, rgba(255,255,255,.60) 0 18px, rgba(255,255,255,0) 18px 34px);
-      opacity: .75;
-      border-radius: 999px;
-    }
-    .car{
-      position:absolute;
-      top: 61px;
-      transform: translate(-50%,-50%);
-      width: 54px;
-      height: 28px;
-      border-radius: 8px;
-      background: var(--accent);
-      box-shadow: 0 10px 22px rgba(0,0,0,.28);
-    }
-    .car:before{
-      content:"";
-      position:absolute;
-      left: 12px;
-      top: -7px;
-      width: 26px;
-      height: 14px;
-      border-radius: 8px 8px 5px 5px;
-      background: rgba(184,31,45,.95);
-    }
-    .flag{
-      position:absolute;
-      right: 10px;
-      top: 12px;
-      width: 46px;
-      height: 90px;
-      opacity: .95;
-    }
-    .flag:before{
-      content:"";
-      position:absolute;
-      left: 20px; top: 0;
-      width: 4px; height: 92px;
-      background: rgba(238,242,255,.8);
-      border-radius: 2px;
-    }
-    .flag:after{
-      content:"";
-      position:absolute;
-      left: 24px; top: 8px;
-      width: 28px; height: 22px;
-      background: conic-gradient(#000 0 25%, #fff 0 50%, #000 0 75%, #fff 0);
-      background-size: 10px 10px;
-      border-radius: 3px;
-      box-shadow: 0 2px 6px rgba(0,0,0,.28);
-    }
-
-    /* Small helper pill */
+    /* Top helper pill */
     .r2d-pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:8px 12px; border-radius:999px;
@@ -372,197 +281,62 @@
       white-space: nowrap;
     }
 
-/* ===== R2D: results + info card layout ===== */
-.r2d-two{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:14px;
-  align-items:start;
-}
+    /* Right column: Learn panel */
+    .r2d-learn-slim{
+      margin-top:14px;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      backdrop-filter: blur(6px);
+    }
+    .r2d-learn-slim h3{
+      margin:0 0 12px;
+      font-size:15px;
+      font-weight:950;
+      opacity:.92;
+    }
 
-/* hide the visual bar + key (the “card on the right” you don’t want) */
-.distBar,
-.keyRow{ display:none !important; }
+    .r2d-learn-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:10px;
+    }
+    .r2d-learn-mini{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:11px 12px;
+      border-radius:12px;
+      text-decoration:none;
+      color:#eef2ff;
+      font-weight:850;
+      font-size:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      transition:.15s ease;
+    }
+    .r2d-learn-mini:hover{
+      background:rgba(229,59,59,.15);
+      border-color:rgba(229,59,59,.35);
+      transform:translateY(-2px);
+    }
 
-/* info card styling (matches your dark/red theme vibe) */
-.r2d-edu-card{
-  border:1px solid rgba(255,255,255,.12);
-  background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
-  border-radius:18px;
-  padding:16px;
-  color:#eef2ff;
-}
-
-.r2d-edu-card p{
-  margin:0 0 10px;
-  color:rgba(238,242,255,.78);
-  line-height:1.55;
-  font-weight:650;
-}
-
-.r2d-edu-card strong{ color:#fff; }
-
-.r2d-edu-card ul{
-  margin:10px 0 12px;
-  padding-left:18px;
-  color:rgba(238,242,255,.78);
-}
-.r2d-edu-card li{ margin:6px 0; }
-
-@media (max-width: 900px){
-  .r2d-two{ grid-template-columns: 1fr; }
-}
-
-    /* ✅ Remove bottom empty band */
-body,
-html{
-  min-height: auto !important;
-  height: auto !important;
-}
-
-.r2d-shell,
-.r2d-grid{
-  align-items: start !important;
-}
-
-/* stop phantom spacing from old right column */
-.r2d-grid{
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-/* prevent extra page stretch */
-main,
-.site-content,
-.wp-site-blocks{
-  padding-bottom: 0 !important;
-}
-
-    .r2d-seo-links{
-  margin-top:14px;
-}
-
-.r2d-seo-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin-top:12px;
-}
-
-.r2d-seo-link{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:12px 14px;
-  border-radius:12px;
-  text-decoration:none;
-  font-weight:800;
-  color:#eef2ff;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.12);
-  transition:.15s ease;
-}
-
-.r2d-seo-link:hover{
-  transform:translateY(-2px);
-  background:rgba(229,59,59,.15);
-  border-color:rgba(229,59,59,.4);
-}
-
- /* ===== Slim right learning panel ===== */
-.r2d-learn-slim{
-  margin-top:14px;
-  padding:16px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(255,255,255,.03);
-  backdrop-filter: blur(6px);
-}
-
-.r2d-learn-slim h3{
-  margin:0 0 12px;
-  font-size:16px;
-  font-weight:900;
-  opacity:.9;
-}
-
-/* ✅ 2x2 GRID */
-.r2d-learn-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-
-/* link cards */
-.r2d-learn-mini{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:12px 14px;
-  border-radius:12px;
-  text-decoration:none;
-  color:#eef2ff;
-  font-weight:800;
-  font-size:14px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  transition:.15s ease;
-}
-
-.r2d-learn-mini:hover{
-  background:rgba(229,59,59,.15);
-  border-color:rgba(229,59,59,.35);
-  transform:translateY(-2px);
-}
-
-/* mobile fallback */
-@media (max-width:600px){
-  .r2d-learn-grid{
-    grid-template-columns:1fr;
-  }
-  /* ===== Center Logo ===== */
-.r2d-logo-wrap{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:18px 0 24px;
-}
-
-/* Logo styling */
-.r2d-logo-wrap img{
-  width:110px;          /* ← bigger */
-  height:110px;
-  object-fit:cover;
-
-  border-radius:50%;    /* ✅ perfect circle */
-
-  padding:10px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.15);
-
-  box-shadow:
-    0 12px 30px rgba(0,0,0,.45),
-    inset 0 0 0 1px rgba(255,255,255,.06);
-
-  transition:.2s ease;
-}
-
-/* subtle premium hover */
-.r2d-logo-wrap img:hover{
-  transform:translateY(-2px) scale(1.03);
-}
-    
+    @media (max-width:600px){
+      .r2d-learn-grid{ grid-template-columns:1fr; }
+    }
   </style>
 </head>
 
 <body>
   <div class="r2d-wrap">
 
+    <!-- centered circular logo only -->
     <div class="r2d-top">
-
-      <div class="r2d-logo-wrap">
-  <img src="https://reddi2drive.co.uk/wp-content/uploads/2026/01/reddi2drivelogo.png" alt="Reddi2Drive logo">
-</div>
+      <div class="r2d-logo-badge" aria-label="Reddi2Drive">
+        <img src="https://reddi2drive.co.uk/wp-content/uploads/2026/01/reddi2drivelogo.png" alt="Reddi2Drive logo">
+      </div>
+    </div>
 
     <section class="r2d-titlecard" aria-label="Stopping distance calculator">
       <h1>Stopping Distance Calculator</h1>
@@ -643,63 +417,47 @@ main,
         </div>
       </section>
 
+      <!-- RIGHT: Explanation + Continue learning -->
+      <aside class="r2d-card">
+        <h2>Stopping Distance Explained</h2>
 
-     <!-- RIGHT: Stopping Distance Explanation -->
-<aside class="r2d-card r2d-edu-card">
+        <p style="margin:0 0 10px; color:rgba(238,242,255,.78); line-height:1.55; font-weight:650;">
+          This calculator demonstrates how speed and road conditions affect
+          thinking distance, braking distance and total stopping distance.
+        </p>
 
-  <h2>Stopping Distance Explained</h2>
+        <ul style="margin:10px 0 12px; padding-left:18px; color:rgba(238,242,255,.78);">
+          <li style="margin:6px 0;"><strong style="color:#fff;">Thinking distance</strong> is the distance travelled while reacting.</li>
+          <li style="margin:6px 0;"><strong style="color:#fff;">Braking distance</strong> depends on speed, grip and road surface.</li>
+          <li style="margin:6px 0;"><strong style="color:#fff;">Total stopping distance</strong> = Thinking + Braking distance.</li>
+          <li style="margin:6px 0;"><strong style="color:#fff;">Following distance</strong> should increase in poor conditions.</li>
+        </ul>
 
-  <p>
-    This calculator demonstrates how speed and road conditions affect
-    thinking distance, braking distance and total stopping distance.
-  </p>
+        <p style="margin:0 0 10px; color:rgba(238,242,255,.78); line-height:1.55; font-weight:650;">
+          The Highway Code recommends allowing at least
+          <strong style="color:#fff;">double the stopping distance in wet conditions</strong>.
+          Reduced tyre grip means braking takes significantly longer,
+          even though reaction time remains the same.
+        </p>
 
-  <ul>
-    <li><strong>Thinking distance</strong> is the distance travelled while reacting.</li>
-    <li><strong>Braking distance</strong> depends on speed, grip and road surface.</li>
-    <li><strong>Total stopping distance</strong> = Thinking + Braking distance.</li>
-    <li><strong>Following distance</strong> should increase in poor conditions.</li>
-  </ul>
+        <p style="margin:0; color:rgba(238,242,255,.78); line-height:1.55; font-weight:650;">
+          Vehicle load, tyre condition, weather and driver fatigue all
+          increase stopping distance. Always leave more space than the
+          minimum shown here when driving in real conditions.
+        </p>
 
-  <p>
-    The Highway Code recommends allowing at least
-    <strong>double the stopping distance in wet conditions</strong>.
-    Reduced tyre grip means braking takes significantly longer,
-    even though reaction time remains the same.
-  </p>
+        <div class="r2d-learn-slim">
+          <h3>Continue learning</h3>
 
-  <p>
-    Vehicle load, tyre condition, weather and driver fatigue all
-    increase stopping distance. Always leave more space than the
-    minimum shown here when driving in real conditions.
-  </p>
+          <div class="r2d-learn-grid">
+            <a href="/highway-code/" class="r2d-learn-mini">📘 Highway Code Guide</a>
+            <a href="/practice/" class="r2d-learn-mini">🧠 Theory Practice Tests</a>
+            <a href="/learn/" class="r2d-learn-mini">🚗 Learner Resources</a>
+            <a href="/booking-enquiry/" class="r2d-learn-mini">🚦 Driving Lessons in Redditch</a>
+          </div>
+        </div>
+      </aside>
 
-  <div class="r2d-learn-slim">
-
-  <h3>Continue learning</h3>
-
-  <div class="r2d-learn-grid">
-
-    <a href="/highway-code/" class="r2d-learn-mini">
-      📘 Highway Code Guide
-    </a>
-
-    <a href="/practice/" class="r2d-learn-mini">
-      🧠 Theory Practice Tests
-    </a>
-
-    <a href="/learn/" class="r2d-learn-mini">
-      🚗 Learner Resources
-    </a>
-
-    <a href="/booking-enquiry/" class="r2d-learn-mini">
-      🚦 Driving Lessons in Redditch
-    </a>
-
-  </div>
-
-</aside>
-      
     </div>
   </div>
 
@@ -754,19 +512,6 @@ main,
         segBrake.style.width = Math.max(64, brakeW) + 'px';
         segBrake.style.left  = (padL + Math.max(64, thinkW)) + 'px';
         segBrake.textContent = (brake == null ? '—' : fmt(brake)) + ' m';
-      }
-
-      // move car roughly along the road based on stopping distance
-      const car = el('car');
-      if(car && stop){
-        // map 0..100m roughly into 40..(container width - 80)
-        const road = car.parentElement;
-        const w = road.clientWidth || 600;
-        const minX = 40;
-        const maxX = Math.max(120, w - 80);
-        const clamped = Math.max(0, Math.min(100, stop));
-        const x = minX + (maxX - minX) * (clamped / 100);
-        car.style.left = x + "px";
       }
     }
 
