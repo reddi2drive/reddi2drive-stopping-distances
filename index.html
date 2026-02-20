@@ -44,24 +44,48 @@
 
     .r2d-wrap{ max-width:1100px; margin:0 auto; padding: 18px 14px 48px; }
 
-    /* Top bar */
-    .r2d-top{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; margin: 6px 0 14px;
-    }
-    .r2d-home-pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px; border-radius:999px; text-decoration:none;
-      background:rgba(255,255,255,.06); border:1px solid var(--line);
-      color:var(--text); font-weight:900;
-      backdrop-filter: blur(8px);
-    }
-    .r2d-brand{
-      display:inline-flex; align-items:baseline;
-      text-decoration:none; color:var(--text);
-      font-weight:1000; letter-spacing:.2px; font-size:18px; opacity:.95;
-    }
-    .r2d-brand2{ color:var(--accent); }
+    /* Top bar (left / center / right) */
+.r2d-top{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin: 6px 0 14px;
+}
+
+/* keep left + right above centred logo */
+.r2d-home-pill,
+.r2d-brand{
+  position:relative;
+  z-index:2;
+}
+
+/* centred logo */
+.r2d-logo{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1;
+  text-decoration:none;
+  pointer-events:auto;
+}
+
+.r2d-logo img{
+  height:24px;          /* tweak 24–34 */
+  width:auto;
+  opacity:.95;
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,.35));
+}
+    .r2d-home-pill{ padding:9px 12px; }
+
+/* tighten on small screens */
+@media (max-width:520px){
+  .r2d-logo img{ height:24px; }
+}
 
     /* Title card */
     .r2d-titlecard{
