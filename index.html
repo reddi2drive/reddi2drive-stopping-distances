@@ -439,7 +439,7 @@ main,
   border-color:rgba(229,59,59,.4);
 }
 
-    /* ===== Slim right learning panel ===== */
+ /* ===== Slim right learning panel ===== */
 .r2d-learn-slim{
   margin-top:14px;
   padding:16px;
@@ -450,20 +450,29 @@ main,
 }
 
 .r2d-learn-slim h3{
-  margin:0 0 10px;
+  margin:0 0 12px;
   font-size:16px;
   font-weight:900;
   opacity:.9;
 }
 
+/* ✅ 2x2 GRID */
+.r2d-learn-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+/* link cards */
 .r2d-learn-mini{
-  display:block;
-  padding:10px 12px;
-  margin-bottom:8px;
-  border-radius:10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 14px;
+  border-radius:12px;
   text-decoration:none;
   color:#eef2ff;
-  font-weight:700;
+  font-weight:800;
   font-size:14px;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
@@ -473,7 +482,14 @@ main,
 .r2d-learn-mini:hover{
   background:rgba(229,59,59,.15);
   border-color:rgba(229,59,59,.35);
-  transform:translateX(3px);
+  transform:translateY(-2px);
+}
+
+/* mobile fallback */
+@media (max-width:600px){
+  .r2d-learn-grid{
+    grid-template-columns:1fr;
+  }
 }
     
   </style>
