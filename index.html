@@ -44,47 +44,53 @@
 
     .r2d-wrap{ max-width:1100px; margin:0 auto; padding: 18px 14px 48px; }
 
-    /* Top bar (left / center / right) */
+  /* ===== CLEAN CENTRED LOGO HEADER ===== */
+
 .r2d-top{
-  position:relative;
   display:flex;
+  justify-content:center;
   align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin: 6px 0 14px;
+  margin:12px 0 18px;
 }
 
-/* keep left + right above centred logo */
-.r2d-home-pill,
-.r2d-brand{
-  position:relative;
-  z-index:2;
-}
-
-/* centred logo */
+/* Logo container */
 .r2d-logo{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:1;
   text-decoration:none;
-  pointer-events:auto;
 }
 
+/* Logo styling */
 .r2d-logo img{
-  height:24px;          /* tweak 24–34 */
+  height:54px;                 /* 👈 bigger */
   width:auto;
-  opacity:.95;
-  filter: drop-shadow(0 10px 22px rgba(0,0,0,.35));
-}
-    .r2d-home-pill{ padding:9px 12px; }
+  border-radius:16px;          /* 👈 rounded */
+  padding:6px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
 
-/* tighten on small screens */
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.45),
+    inset 0 0 18px rgba(255,255,255,.04);
+
+  transition:.2s ease;
+}
+
+/* subtle premium hover */
+.r2d-logo img:hover{
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.55),
+    0 0 25px rgba(229,59,59,.25);
+}
+
+/* mobile sizing */
 @media (max-width:520px){
-  .r2d-logo img{ height:24px; }
+  .r2d-logo img{
+    height:46px;
+    border-radius:14px;
+  }
 }
 
     /* Title card */
