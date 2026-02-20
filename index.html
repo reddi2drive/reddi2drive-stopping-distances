@@ -438,6 +438,43 @@ main,
   background:rgba(229,59,59,.15);
   border-color:rgba(229,59,59,.4);
 }
+
+    /* ===== Slim right learning panel ===== */
+.r2d-learn-slim{
+  margin-top:14px;
+  padding:16px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.03);
+  backdrop-filter: blur(6px);
+}
+
+.r2d-learn-slim h3{
+  margin:0 0 10px;
+  font-size:16px;
+  font-weight:900;
+  opacity:.9;
+}
+
+.r2d-learn-mini{
+  display:block;
+  padding:10px 12px;
+  margin-bottom:8px;
+  border-radius:10px;
+  text-decoration:none;
+  color:#eef2ff;
+  font-weight:700;
+  font-size:14px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.15s ease;
+}
+
+.r2d-learn-mini:hover{
+  background:rgba(229,59,59,.15);
+  border-color:rgba(229,59,59,.35);
+  transform:translateX(3px);
+}
     
   </style>
 </head>
@@ -567,37 +604,28 @@ main,
 
 </aside>
 
-      <!-- ✅ Continue Learning / SEO LINKS -->
-<section class="r2d-card r2d-seo-links">
+     <!-- ✅ Slim Continue Learning Panel -->
+<div class="r2d-learn-slim">
 
-  <h2>Continue Learning</h2>
+  <h3>Continue learning</h3>
 
-  <p class="r2d-muted">
-    Build your understanding of stopping distances, hazard awareness
-    and safe driving using our learner resources.
-  </p>
+  <a href="/highway-code/" class="r2d-learn-mini">
+    📘 Highway Code Guide
+  </a>
 
-  <div class="r2d-seo-grid">
+  <a href="/practice/" class="r2d-learn-mini">
+    🧠 Theory Practice Tests
+  </a>
 
-    <a href="/highway-code/" class="r2d-seo-link">
-      📘 Highway Code Guide
-    </a>
+  <a href="/learn/" class="r2d-learn-mini">
+    🚗 Learner Resources
+  </a>
 
-    <a href="/practice/" class="r2d-seo-link">
-      🧠 Theory Practice Tests
-    </a>
+  <a href="/booking-enquiry/" class="r2d-learn-mini">
+    🚦 Driving Lessons in Redditch
+  </a>
 
-    <a href="/learn/" class="r2d-seo-link">
-      🚗 Learner Driver Resources
-    </a>
-
-    <a href="/booking-enquiry/" class="r2d-seo-link">
-      🚦 Driving Lessons in Redditch
-    </a>
-
-  </div>
-
-</section>
+</div>
       
     </div>
   </div>
